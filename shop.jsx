@@ -46,3 +46,29 @@ function ShoppingCart({ availableItems }) {
       </>
     );
   }
+  function Cart({ cartitems }) {
+  const { Button } = ReactBootstrap;
+  console.log('rendering Cart');
+  const availableItemsButtons = cartitems.map((item, index) => {
+    return (
+      <Button id={item.product} key={index}>
+        {item.product}
+      </Button>
+    );
+  });
+  return (
+    <ul id="cart-items" style={{ listStyleType: 'none' }} key="cart">
+      {availableItemsButtons}
+    </ul>
+  );
+}
+
+const availableItems = [
+  { product: 'Jacket', inStock: 2 },
+  { product: 'Pants', inStock: 3 },
+  { product: 'Scarf', inStock: 0 },
+  { product: 'Pajamas', inStock: 3 },
+  { product: 'Shirt', inStock: 1 },
+];
+
+ReactDOM.render(<ShoppingCart availableItems={availableItems} />, document.getElementById('root'));
